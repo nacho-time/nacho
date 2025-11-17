@@ -1,5 +1,4 @@
-<h1 align=center>NACHO</h1>
-<h2 align=center>Torrent Streaming Client with Content History Tracking</h2>
+<h1 align=center>NACHO - Torrent Streaming Client with Content History Tracking</h1>
 
 ![Nacho Time teaser](docs/teaser1.jpg)
 
