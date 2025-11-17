@@ -1,6 +1,6 @@
 <h1 align=center>NACHO - Torrent Streaming Client with Content History Tracking</h1>
 
-[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/nacho-time/nacho)
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/nacho-time/nacho) ![GitHub Repo stars](https://img.shields.io/github/stars/nacho-time/nacho?style=flat-square) ![GitHub forks](https://img.shields.io/github/forks/nacho-time/nacho?style=flat-square)
 
 ![Nacho Time teaser](docs/teaser1.jpg)
 
