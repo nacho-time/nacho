@@ -1,7 +1,11 @@
-# Tauri + Solid + Typescript
+# NACHO - Tauri based Torrent Streaming Client with Content History Tracking
 
-This template should help get you started developing with Tauri, Solid and Typescript in Vite.
+### Tortilla chips have always been a far superior movie snack to popcorn. Sorry, not sorry.
 
-## Recommended IDE Setup
+After the coup d'état that caused [Popcorn Time](https://github.com/popcorntime/popcorntime)'s codebase to mysteriously disappear, Nacho Time rises from the ashes as a Tauri-based torrent streaming client with built-in content history tracking.
 
-- [VS Code](https://code.visualstudio.com/) + [Tauri](https://marketplace.visualstudio.com/items?itemName=tauri-apps.tauri-vscode) + [rust-analyzer](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer)
+No more dependency on Russian servers! No more shady practices! Just pure, unadulterated torrent streaming goodness.
+
+A first version was built using the Trakt.tv API. However, trakt was only used to track watch history and get trending content. To avoid reliance on third-party services, Nacho Time now includes its own server component, [Nacho Server](https://github.com/nacho-time/nacho-time-server).
+
+### [Nacho Server](https://github.com/nacho-time/nacho-time-server) is a required component to use Nacho. You can run it locally or use a hosted instance. If you are not a technical user, ask one of your tech-savvy friends to set one up! They can be shared by multiple users.
