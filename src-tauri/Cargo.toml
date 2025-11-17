@@ -1,0 +1,63 @@
+[package]
+name = "nacho-time"
+version = "0.1.0"
+description = "A Tauri App"
+authors = ["you"]
+edition = "2024"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+# The `_lib` suffix may seem redundant but it is necessary
+# to make the lib name unique and wouldn't conflict with the bin name.
+# This seems to be only an issue on Windows, see https://github.com/rust-lang/cargo/issues/8519
+name = "nacho_time_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[features]
+disable-upload = []
+
+[dependencies]
+tauri = { version = "2", features = ["macos-private-api", "protocol-asset"] }
+tauri-plugin-opener = "2"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+serde_bytes = "0.11"
+serde_bencode = "0.2"
+base64 = "0.22"
+tokio = { version = "1", features = ["macros", "rt-multi-thread", "fs", "io-util", "net", "sync", "time"] }
+hyper = { version = "0.14", features = ["server", "http1", "tcp", "stream"] }
+tokio-util = { version = "0.7", features = ["io", "compat"] }
+bytes = "1"
+once_cell = "1.19"
+rqbit = { git = "https://github.com/ikatson/rqbit", branch = "main" }
+librqbit = { git = "https://github.com/ikatson/rqbit", branch = "main" }
+dirs-next = "2.0.0"
+axum = { version = "0.7", features = ["tokio"] }
+tower = "0.4"
+tower-http = { version = "0.5", features = ["cors", "fs"] }
+anyhow = "1.0.100"
+ffmpeg-next = "8.0.0"
+http = "1.3.1"
+tracing = "0.1.41"
+parking_lot = "0.12.5"
+librqbit-dualstack-sockets = "0.6.11"
+directories = "6.0.0"
+gethostname = "1.1.0"
+serde_with = "3.15.0"
+metrics-exporter-prometheus = "0.17.2"
+tauri-plugin-shell = "2.3.1"
+chrono = { version = "0.4", features = ["serde"] }
+tauri-plugin-http = { version = "2", features = ["unsafe-headers"] }
+tauri-plugin-stronghold = "2"
+reqwest = { version = "0.12", features = ["json"] }
+lazy_static = "1.4.0"
+tauri-plugin-store = "2"
+tauri-plugin-deep-link = "2"
+
+
+
+

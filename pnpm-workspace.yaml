@@ -1,0 +1,7 @@
+onlyBuiltDependencies:
+  - '@tailwindcss/oxide'
+  - bufferutil
+  - core-js
+  - node-datachannel
+  - utf-8-validate
+  - utp-native
