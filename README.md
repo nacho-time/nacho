@@ -1,4 +1,8 @@
-# NACHO - Tauri based Torrent Streaming Client with Content History Tracking
+# Nacho
+
+## Tauri based Torrent Streaming Client with Content History Tracking
+
+![Nacho Time teaser](docs/teaser1.png)
 
 ### Tortilla chips have always been a far superior movie snack to popcorn. Sorry, not sorry.
 
