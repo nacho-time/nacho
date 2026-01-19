@@ -199,51 +199,52 @@ impl State {
                 }),
         );
 
-        if let Ok(config) = read_config(&config_filename) {
-            // Ensure download directory exists and is writable
-            if let Err(e) = std::fs::create_dir_all(&config.default_download_location) {
-                warn!(
-                    "Failed to create download directory {:?}: {}. Using default.",
-                    config.default_download_location, e
-                );
-            }
+        let config = read_config(&config_filename).unwrap_or_else(|e| {
+            warn!(error=?e, "error reading configuration, using default");
+            RqbitDesktopConfig::default()
+        });
 
-            let api = api_from_config(&init_logging, &config)
-                .await
-                .map_err(|e| {
-                    warn!(error=?e, "error reading configuration");
-                    e
-                })
-                .ok();
-
-            // Sync database with current torrents
-            if let Some(ref api) = api {
-                let torrent_list = api.api_torrent_list();
-                let active_hashes: Vec<String> = torrent_list
-                    .torrents
-                    .iter()
-                    .map(|t| t.info_hash.clone())
-                    .collect();
-
-                if let Err(e) = torrent_db.sync_with_torrent_list(&active_hashes) {
-                    warn!(error=?e, "error syncing torrent database");
-                }
-            }
-
-            let shared = Arc::new(RwLock::new(Some(StateShared { config, api })));
-
-            return Self {
-                config_filename,
-                shared,
-                init_logging,
-                torrent_db,
-            };
+        // Ensure download directory exists and is writable
+        if let Err(e) = std::fs::create_dir_all(&config.default_download_location) {
+            warn!(
+                "Failed to create download directory {:?}: {}. Using default.",
+                config.default_download_location, e
+            );
         }
+
+        // Write config to file if it was created from default
+        if let Err(e) = write_config(&config_filename, &config) {
+            warn!(error=?e, "error writing default configuration to file");
+        }
+
+        let api = api_from_config(&init_logging, &config)
+            .await
+            .map_err(|e| {
+                warn!(error=?e, "error initializing API from configuration");
+                e
+            })
+            .ok();
+
+        // Sync database with current torrents
+        if let Some(ref api) = api {
+            let torrent_list = api.api_torrent_list();
+            let active_hashes: Vec<String> = torrent_list
+                .torrents
+                .iter()
+                .map(|t| t.info_hash.clone())
+                .collect();
+
+            if let Err(e) = torrent_db.sync_with_torrent_list(&active_hashes) {
+                warn!(error=?e, "error syncing torrent database");
+            }
+        }
+
+        let shared = Arc::new(RwLock::new(Some(StateShared { config, api })));
 
         Self {
             config_filename,
+            shared,
             init_logging,
-            shared: Arc::new(RwLock::new(None)),
             torrent_db,
         }
     }
@@ -313,6 +314,7 @@ pub async fn config_change(
 }
 
 pub fn torrents_list(state: &State) -> Result<TorrentListResponse, ApiError> {
+    println!("Getting torrent list");
     Ok(state.api()?.api_torrent_list())
 }
 

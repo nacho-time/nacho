@@ -2,6 +2,7 @@ onlyBuiltDependencies:
   - '@tailwindcss/oxide'
   - bufferutil
   - core-js
+  - esbuild
   - node-datachannel
   - utf-8-validate
   - utp-native

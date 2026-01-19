@@ -19,7 +19,7 @@
       "identifier": "opener:allow-open-url",
       "allow": [
         {
-          "url": "https://trakt.tv/*"
+          "url": "https://*/*"
         }
       ]
     },
@@ -31,6 +31,12 @@
         },
         {
           "url": "http://**/"
+        },
+        {
+          "url": "https://*:*"
+        },
+        {
+          "url": "https://**/"
         }
       ]
     },
@@ -44,6 +50,7 @@
     "core:webview:allow-create-webview",
     "core:window:allow-set-fullscreen",
     "core:window:allow-is-fullscreen",
+    "core:path:default",
     "stronghold:default",
     "store:default",
     "deep-link:default"
