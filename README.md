@@ -34,6 +34,8 @@ cd nacho-time
 
 2. Make sure you have Rust and Node.js installed. Then, install the dependencies:
 
+(on linux: `sudo apt install libavutil-dev libavcodec-dev libavformat-dev libavfilter-dev libavdevice-dev libwebkit2gtk-4.1-dev libjavascriptcoregtk-4.1-dev libssl-dev pkg-config`)
+
 ```bash
 pnpm install
 ```
